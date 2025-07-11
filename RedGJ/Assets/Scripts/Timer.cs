@@ -10,10 +10,12 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI winText;
     public TextMeshProUGUI loseText;
-    public TextMeshProUGUI startCountdownText; 
+    public TextMeshProUGUI startCountdownText;
 
     private bool timerRunning = false;
     private bool gameEnded = false;
+
+    public static bool gameStarted = false; 
 
     void Start()
     {
@@ -21,6 +23,7 @@ public class Timer : MonoBehaviour
         winText.gameObject.SetActive(false);
         loseText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);
+        gameStarted = false; 
         StartCoroutine(ShowStartCountdown());
     }
 
@@ -29,7 +32,7 @@ public class Timer : MonoBehaviour
         startCountdownText.gameObject.SetActive(true);
 
         startCountdownText.text = "Ready...";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         startCountdownText.text = "Start!";
         yield return new WaitForSeconds(1f);
@@ -37,6 +40,8 @@ public class Timer : MonoBehaviour
         startCountdownText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(true);
         timerRunning = true;
+
+        gameStarted = true; 
     }
 
     void Update()
@@ -50,10 +55,9 @@ public class Timer : MonoBehaviour
 
             if (currentTime <= 0)
             {
-                EndGame(false); // lost
+                EndGame(false);
             }
 
-// Test win
             if (Input.GetKeyDown(KeyCode.W))
             {
                 EndGame(true);
@@ -72,6 +76,7 @@ public class Timer : MonoBehaviour
     {
         timerRunning = false;
         gameEnded = true;
+        gameStarted = false; 
 
         if (win)
         {

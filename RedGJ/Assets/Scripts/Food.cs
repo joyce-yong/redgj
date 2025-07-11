@@ -32,13 +32,14 @@ public class Food : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isStacked)
+        if (!isStacked && Timer.gameStarted)
         {
             transform.position -= new Vector3(0f, 0.12f, 0f);
             if (transform.position.y < -6f)
                 Destroy(this.gameObject);
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
