@@ -3,20 +3,24 @@ using UnityEngine.UI;
 
 public class PotSpriteTrigger : MonoBehaviour
 {
-    public Sprite coloredPotSprite;
-    public Image potImage;
+    public Sprite coloredPotSprite;          // The colored version of the pot
+    public Image[] potImages;                // All black pot images (3 for this level)
 
-    private bool isMealCompleted = false;
+    private int completedMeals = 0;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isMealCompleted && other.CompareTag("Food"))
+        if (other.CompareTag("Food"))
         {
-            Debug.Log("Food delivered to table!");
-            potImage.sprite = coloredPotSprite;
-            isMealCompleted = true;
+            if (completedMeals < potImages.Length)
+            {
+                // Change the current pot to the colored version
+                potImages[completedMeals].sprite = coloredPotSprite;
+                completedMeals++;
 
-            
+                Debug.Log("Meal " + completedMeals + " completed!");
+            }
+
             Destroy(other.gameObject);
         }
     }

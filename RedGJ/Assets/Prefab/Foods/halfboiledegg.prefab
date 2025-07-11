@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5058692179224660460}
   - component: {fileID: 2043971359397620018}
   - component: {fileID: 5839131895820113057}
+  - component: {fileID: -4393846273673988254}
   m_Layer: 0
   m_Name: halfboiledegg
   m_TagString: Food
@@ -162,3 +163,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.2693965, y: 0.9547701}
   m_EdgeRadius: 0
+--- !u!114 &-4393846273673988254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458390766144464761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c880f2d1b9fb04aba85b158c7fd00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

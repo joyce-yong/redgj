@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7727588318119617715}
   - component: {fileID: 7712205134948414209}
   - component: {fileID: 826334326680754320}
+  - component: {fileID: -3631537403361988669}
   m_Layer: 0
   m_Name: breadkaya
   m_TagString: Food
@@ -150,7 +151,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0023561716, y: -0.0017273426}
+  m_Offset: {x: 0.0023561716, y: -0.002792403}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -160,5 +161,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9147947, y: 0.49427462}
+  m_Size: {x: 0.9147947, y: 0.49640474}
   m_EdgeRadius: 0
+--- !u!114 &-3631537403361988669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285073625498708647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c880f2d1b9fb04aba85b158c7fd00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

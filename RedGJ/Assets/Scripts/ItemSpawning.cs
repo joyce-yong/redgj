@@ -23,10 +23,10 @@ public class ItemSpawning : MonoBehaviour
             Rigidbody2D rb = spawned.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.gravityScale = 0.3f; 
+                rb.gravityScale = 0.01f; 
             }
 
-            timer = 0.7f;
+            timer = 1.0f;
         }
     }
 }
