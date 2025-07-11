@@ -15,7 +15,15 @@ public class Timer : MonoBehaviour
     private bool timerRunning = false;
     private bool gameEnded = false;
 
-    public static bool gameStarted = false; 
+    public static bool gameStarted = false;
+    public static Timer instance;
+
+    private PotSpriteTrigger potTracker;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -23,7 +31,10 @@ public class Timer : MonoBehaviour
         winText.gameObject.SetActive(false);
         loseText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);
-        gameStarted = false; 
+        gameStarted = false;
+
+        potTracker = FindObjectOfType<PotSpriteTrigger>();
+
         StartCoroutine(ShowStartCountdown());
     }
 
@@ -41,7 +52,7 @@ public class Timer : MonoBehaviour
         timerText.gameObject.SetActive(true);
         timerRunning = true;
 
-        gameStarted = true; 
+        gameStarted = true;
     }
 
     void Update()
@@ -55,7 +66,9 @@ public class Timer : MonoBehaviour
 
             if (currentTime <= 0)
             {
-                EndGame(false);
+                // Check if player completed 3 meals
+                bool win = potTracker != null && potTracker.GetCompletedMeals() >= 3;
+                EndGame(win);
             }
 
             if (Input.GetKeyDown(KeyCode.W))
@@ -74,9 +87,11 @@ public class Timer : MonoBehaviour
 
     public void EndGame(bool win)
     {
+        if (gameEnded) return;
+
         timerRunning = false;
         gameEnded = true;
-        gameStarted = false; 
+        gameStarted = false;
 
         if (win)
         {

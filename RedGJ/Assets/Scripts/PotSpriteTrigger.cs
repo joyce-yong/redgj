@@ -29,9 +29,20 @@ public class PotSpriteTrigger : MonoBehaviour
                 }
 
                 Food.ResetStack();
+
+                if (completedMeals >= 3)
+                {
+                    Timer.instance.EndGame(true);
+                }
             }
 
             Destroy(other.gameObject);
         }
+
+
+    }
+    public int GetCompletedMeals()
+    {
+        return completedMeals;
     }
 }
