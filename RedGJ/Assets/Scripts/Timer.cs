@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Timer : MonoBehaviour
 {
-    public float timerDuration = 45f;
+    public float timerDuration = 90f;
     private float currentTime;
 
     public TextMeshProUGUI timerText;

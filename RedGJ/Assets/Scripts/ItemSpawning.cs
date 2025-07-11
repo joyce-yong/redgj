@@ -14,7 +14,7 @@ public class ItemSpawning : MonoBehaviour
         else
         {
 
-            float pos_x = Random.Range(-2.5f, 2.5f);
+            float pos_x = Random.Range(-0.9f, 2.5f);
             int index = Random.Range(0, gm.Length); 
 
             // Spawn object
