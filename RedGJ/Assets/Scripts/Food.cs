@@ -77,4 +77,9 @@ public class Food : MonoBehaviour
             col.isTrigger = false;
         }
     }
+	
+	public static void ResetStack()
+	{
+		topOfStack = null;
+	}
 }
