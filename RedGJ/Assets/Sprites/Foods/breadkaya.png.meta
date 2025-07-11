@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      breadkaya_0: 344077501229191317
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

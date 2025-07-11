@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     private Rigidbody2D rb;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 }

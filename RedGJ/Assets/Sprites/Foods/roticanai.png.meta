@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      roticanai_0: -1440762437583775407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
