@@ -695,10 +695,10 @@ MonoBehaviour:
   - {fileID: 937230721}
   - {fileID: 1805725909}
   mealCompleteSound: {fileID: 8300000, guid: 4f8b2a2e02f93034c82d46569bc039d2, type: 3}
-  tappySkillButton: {fileID: 197172398}
-  tappyLockSprite: {fileID: 610926759}
-  oguSkillButton: {fileID: 1076792048}
-  oguLockSprite: {fileID: 2042537459}
+  tappySkillButton: {fileID: 0}
+  tappyLockSprite: {fileID: 0}
+  oguSkillButton: {fileID: 0}
+  oguLockSprite: {fileID: 0}
 --- !u!82 &237318802
 AudioSource:
   m_ObjectHideFlags: 0
@@ -970,6 +970,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &380658428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 380658429}
+  m_Layer: 0
+  m_Name: Lock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &380658429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380658428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06254099, y: 0.23215544, z: -0.024140028}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 610926761}
+  - {fileID: 2042537461}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &389482444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,12 +1521,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610926759}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.735, y: -4.4, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.797541, y: -4.6321554, z: 0.024140028}
   m_LocalScale: {x: 0.19622244, y: 0.19622244, z: 0.19622244}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 380658429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &675599890
 GameObject:
@@ -4365,6 +4398,7 @@ MonoBehaviour:
   startCountdownText: {fileID: 811027725}
   fadeDuration: 0.5
   displayTime: 1
+  tutorialPanel: {fileID: 0}
   sceneName: WinScene
   sceneName2: LoseScene
 --- !u!4 &1863953305
@@ -4498,7 +4532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5175e54c73f4de34fa4fcbe6b2cd3f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biggiePrefab: {fileID: 6680702745190143685, guid: 6d12a82ab7a9ff447831b03fe9784ef9, type: 3}
+  biggiePrefab: {fileID: 0}
   biggieSpawnChance: 0.2
   gm:
   - {fileID: 1625479909542303492, guid: 4da1539af9a56c04e9a89d9d8ceebf8b, type: 3}
@@ -4604,12 +4638,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042537459}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -4.4, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.017459005, y: -4.6321554, z: 0.024140028}
   m_LocalScale: {x: 0.19622244, y: 0.19622244, z: 0.19622244}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 380658429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099152044
 GameObject:
@@ -4654,5 +4688,4 @@ SceneRoots:
   - {fileID: 1621729233}
   - {fileID: 1261492716}
   - {fileID: 389683806}
-  - {fileID: 610926761}
-  - {fileID: 2042537461}
+  - {fileID: 380658429}

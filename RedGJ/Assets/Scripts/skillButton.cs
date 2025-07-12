@@ -23,6 +23,8 @@ public class skillButton : MonoBehaviour
             tappySkill.SetActive(true);
 			StartCoroutine(PauseDuringSkill());
         }
+
+        
     }
 	
 	IEnumerator PauseDuringSkill()
@@ -32,5 +34,7 @@ public class skillButton : MonoBehaviour
 		yield return new WaitForSeconds(5f);
 
 		GameState.IsPausedBySkillTrigger = false;
-	}
+
+        TappyFreezeManager.instance.ActivateFreeze();
+    }
 }

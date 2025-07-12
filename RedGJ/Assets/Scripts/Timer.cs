@@ -83,7 +83,7 @@ public class Timer : MonoBehaviour
 
     void Update()
 	{
-		if (timerRunning && !gameEnded && !GameState.IsPausedBySkillTrigger)
+		if (timerRunning && !gameEnded && !GameState.IsPausedBySkillTrigger && !isTimeFrozenExternally)
 		{
 			currentTime -= Time.deltaTime;
 			currentTime = Mathf.Clamp(currentTime, 0, timerDuration);
@@ -180,5 +180,10 @@ public class Timer : MonoBehaviour
         {
             SceneManager.LoadScene(sceneName2);
         }
+    }
+
+    public void SetTimeFrozen(bool freeze)
+    {
+        isTimeFrozenExternally = freeze;
     }
 }
