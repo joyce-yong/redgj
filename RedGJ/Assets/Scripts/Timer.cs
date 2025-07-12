@@ -29,7 +29,7 @@ public class Timer : MonoBehaviour
 
     private PotSpriteTrigger potTracker;
 	
-	public string sceneName;
+	public string sceneName, sceneName2;
 
     void Awake()
     {
@@ -164,7 +164,8 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            loseText.gameObject.SetActive(true);
+            //loseText.gameObject.SetActive(true);
+			SceneManager.LoadScene(sceneName2);
         }
     }
 }

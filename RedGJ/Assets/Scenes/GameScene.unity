@@ -1960,6 +1960,7 @@ MonoBehaviour:
   fadeDuration: 0.5
   displayTime: 1
   sceneName: WinScene
+  sceneName2: LoseScene
 --- !u!4 &1863953305
 Transform:
   m_ObjectHideFlags: 0
