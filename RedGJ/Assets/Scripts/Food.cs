@@ -39,7 +39,7 @@ public class Food : MonoBehaviour
             {
                 if (Timer.instance != null)
                 {
-                    Timer.instance.DecreaseTime(20f);
+                    Timer.instance.DecreaseTime(10f);
                 }
                 Destroy(this.gameObject);
             }
