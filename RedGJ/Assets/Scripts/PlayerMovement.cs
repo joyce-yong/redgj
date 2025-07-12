@@ -4,8 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
     private Rigidbody2D rb;
-    private bool isDragging = false;
-    private Vector3 offset;
+
 
     void Start()
     {
@@ -33,16 +32,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        if (isDragging)
-        {
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPos.z = 0f;
-
-            Vector3 targetPos = mouseWorldPos + offset;
-            Vector2 newPos = Vector2.Lerp(transform.position, targetPos, moveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(newPos);
-        }
-    }
 }

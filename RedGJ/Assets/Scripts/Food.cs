@@ -3,8 +3,8 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     private bool isStacked = false;
-    private static Transform topOfStack = null; // shared among all food
-    private static Transform playerTransform;   // cached player position
+    private static Transform topOfStack = null; 
+    private static Transform playerTransform;   
 
     void Start()
     { 
@@ -49,8 +49,6 @@ public class Food : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isStacked) return;
-
-        // first item stick only, then the following need to be collide the top stack one to stick
         if ((topOfStack == null && collision.CompareTag("Player")) || collision.transform == topOfStack)
         {
             Transform stackTarget = topOfStack == null ? playerTransform : topOfStack;
