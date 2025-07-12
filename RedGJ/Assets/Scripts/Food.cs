@@ -7,8 +7,7 @@ public class Food : MonoBehaviour
     private static Transform playerTransform;   // cached player position
 
     void Start()
-    {
-        // Cache player transform (optional but useful)
+    { 
         if (playerTransform == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -16,7 +15,7 @@ public class Food : MonoBehaviour
                 playerTransform = playerObj.transform;
         }
 
-        // Ignore floor collisions
+
         GameObject[] floorObjects = GameObject.FindGameObjectsWithTag("Floor");
         Collider2D myCollider = GetComponent<Collider2D>();
 
@@ -35,6 +34,7 @@ public class Food : MonoBehaviour
         if (!isStacked && Timer.gameStarted)
         {
             transform.position -= new Vector3(0f, 0.12f, 0f);
+
             if (transform.position.y < -6f)
             {
                 if (Timer.instance != null)
@@ -43,16 +43,15 @@ public class Food : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
-                
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isStacked) return;
 
-        if (collision.CompareTag("Player"))
+        // Allow stacking if touching player or top of current stack
+        if (collision.CompareTag("Player") || collision.transform == topOfStack)
         {
             Transform stackTarget = topOfStack == null ? playerTransform : topOfStack;
 
@@ -68,8 +67,10 @@ public class Food : MonoBehaviour
 
         transform.parent = target;
 
+        // Use sprite height for accurate stacking
+        float height = GetComponent<SpriteRenderer>().bounds.size.y;
         Vector3 newPos = target.position;
-        newPos.y += 0.5f;
+        newPos.y += height;
         transform.position = newPos;
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -85,9 +86,9 @@ public class Food : MonoBehaviour
             col.isTrigger = false;
         }
     }
-	
-	public static void ResetStack()
-	{
-		topOfStack = null;
-	}
+
+    public static void ResetStack()
+    {
+        topOfStack = null;
+    }
 }
