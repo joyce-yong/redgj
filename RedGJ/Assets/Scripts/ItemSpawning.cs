@@ -3,14 +3,32 @@ using UnityEngine;
 public class ItemSpawning : MonoBehaviour
 {
     public GameObject biggiePrefab;
-    [Range(0f, 1f)] public float biggieSpawnChance = 0.2f; 
+    [Range(0f, 1f)] public float biggieSpawnChance = 0.2f;
 
     public GameObject[] gm;
     private float timer = 1f;
+    private float elapsedGameTime = 0f;
+    private bool wasGameStarted = false;
 
     void Update()
     {
-        if (!Timer.gameStarted) return;
+        if (!Timer.gameStarted)
+        {
+            // Game not started yet, reset timers
+            wasGameStarted = false;
+            elapsedGameTime = 0f;
+            return;
+        }
+
+        // Game just started — reset the timer once
+        if (!wasGameStarted)
+        {
+            wasGameStarted = true;
+            elapsedGameTime = 0f;
+        }
+
+        // Track game time after gameStarted
+        elapsedGameTime += Time.deltaTime;
 
         if (timer > 0)
         {
@@ -22,10 +40,10 @@ public class ItemSpawning : MonoBehaviour
             GameObject spawned;
 
             bool inFever = OguFeverManager.instance != null && OguFeverManager.instance.IsFeverActive();
+            bool canSpawnBiggie = !inFever && (elapsedGameTime >= 10f) && Random.value < biggieSpawnChance;
 
-            if (!inFever && Random.value < biggieSpawnChance)
+            if (canSpawnBiggie)
             {
-                // Safety check for biggie prefab
                 if (biggiePrefab == null)
                 {
                     Debug.LogWarning("Biggie prefab is not assigned!");
@@ -36,7 +54,6 @@ public class ItemSpawning : MonoBehaviour
             }
             else
             {
-                // SAFETY CHECK for food prefab array
                 if (gm.Length == 0)
                 {
                     Debug.LogWarning("No food prefabs assigned to gm array!");
@@ -53,17 +70,13 @@ public class ItemSpawning : MonoBehaviour
                 spawned = Instantiate(gm[index], new Vector3(pos_x, 3.0f, 0.1f), Quaternion.identity);
             }
 
-            // Assign gravity
             Rigidbody2D rb = spawned.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 rb.gravityScale = 0.005f;
             }
 
-            // Spawn rate
             timer = inFever ? 0.3f : 2.0f;
         }
     }
-
-
 }
