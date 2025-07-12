@@ -36,7 +36,14 @@ public class Food : MonoBehaviour
         {
             transform.position -= new Vector3(0f, 0.12f, 0f);
             if (transform.position.y < -6f)
+            {
+                if (Timer.instance != null)
+                {
+                    Timer.instance.DecreaseTime(20f);
+                }
                 Destroy(this.gameObject);
+            }
+                
         }
     }
 
