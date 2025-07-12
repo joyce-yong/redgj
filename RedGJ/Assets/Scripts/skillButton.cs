@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class skillButton : MonoBehaviour
 {
-    public GameObject tappySkill; // 👈 Assign this in the Inspector
+    public GameObject tappySkill;
 
     void Start()
     {
         if (tappySkill != null)
         {
-            tappySkill.SetActive(false); // Make sure it's hidden at start
+            tappySkill.SetActive(false);
         }
     }
 
@@ -20,7 +20,17 @@ public class skillButton : MonoBehaviour
     {
         if (tappySkill != null)
         {
-            tappySkill.SetActive(true); // Show the skill trigger when button is clicked
+            tappySkill.SetActive(true);
+			StartCoroutine(PauseDuringSkill());
         }
     }
+	
+	IEnumerator PauseDuringSkill()
+	{
+		GameState.IsPausedBySkillTrigger = true;
+
+		yield return new WaitForSeconds(5f);
+
+		GameState.IsPausedBySkillTrigger = false;
+	}
 }

@@ -80,21 +80,20 @@ public class Timer : MonoBehaviour
     }
 
     void Update()
-    {
-        if (timerRunning && !gameEnded)
-        {
-            currentTime -= Time.deltaTime;
-            currentTime = Mathf.Clamp(currentTime, 0, timerDuration);
+	{
+		if (timerRunning && !gameEnded && !GameState.IsPausedBySkillTrigger)
+		{
+			currentTime -= Time.deltaTime;
+			currentTime = Mathf.Clamp(currentTime, 0, timerDuration);
+			UpdateTimerText();
 
-            UpdateTimerText();
-
-            if (currentTime <= 0)
-            {
-                bool win = potTracker != null && potTracker.GetCompletedMeals() >= 3;
-                EndGame(win);
-            }
-        }
-    }
+			if (currentTime <= 0)
+			{
+				bool win = potTracker != null && potTracker.GetCompletedMeals() >= 3;
+				EndGame(win);
+			}
+		}
+	}
 
     void UpdateTimerText()
     {

@@ -7,7 +7,7 @@ public class ItemSpawning : MonoBehaviour
 
     void Update()
     {
-        if (!Timer.gameStarted) return;
+        if (!Timer.gameStarted || GameState.IsPausedBySkillTrigger) return;
 
         if (timer > 0)
         {
