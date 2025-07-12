@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using static UnityEngine.Rendering.BoolParameter;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class Timer : MonoBehaviour
     public static Timer instance;
 
     private PotSpriteTrigger potTracker;
+	
+	public string sceneName;
 
     void Awake()
     {
@@ -155,7 +159,8 @@ public class Timer : MonoBehaviour
 
         if (win)
         {
-            winText.gameObject.SetActive(true);
+            //winText.gameObject.SetActive(true);
+			SceneManager.LoadScene(sceneName);
         }
         else
         {

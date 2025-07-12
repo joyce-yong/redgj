@@ -1959,6 +1959,7 @@ MonoBehaviour:
   startCountdownText: {fileID: 811027725}
   fadeDuration: 0.5
   displayTime: 1
+  sceneName: WinScene
 --- !u!4 &1863953305
 Transform:
   m_ObjectHideFlags: 0
