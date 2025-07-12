@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 197172399}
   - component: {fileID: 197172398}
   m_Layer: 5
-  m_Name: skillButton
+  m_Name: tappyskillButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,8 +444,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -556, y: -1518}
-  m_SizeDelta: {x: 314.7, y: 160}
+  m_AnchoredPosition: {x: -556, y: -1496.1}
+  m_SizeDelta: {x: 314.7, y: 203.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &197172398
 MonoBehaviour:
@@ -3396,5 +3396,5 @@ SceneRoots:
   - {fileID: 295800023}
   - {fileID: 1621729233}
   - {fileID: 237318800}
-  - {fileID: 389683806}
   - {fileID: 1261492716}
+  - {fileID: 389683806}
