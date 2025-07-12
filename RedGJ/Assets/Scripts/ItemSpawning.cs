@@ -14,20 +14,17 @@ public class ItemSpawning : MonoBehaviour
     {
         if (!Timer.gameStarted)
         {
-            // Game not started yet, reset timers
             wasGameStarted = false;
             elapsedGameTime = 0f;
             return;
         }
 
-        // Game just started — reset the timer once
         if (!wasGameStarted)
         {
             wasGameStarted = true;
             elapsedGameTime = 0f;
         }
 
-        // Track game time after gameStarted
         elapsedGameTime += Time.deltaTime;
 
         if (timer > 0)

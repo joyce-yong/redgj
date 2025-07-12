@@ -5,14 +5,32 @@ public class PotSpriteTrigger : MonoBehaviour
 {
     public Sprite coloredPotSprite;
     public Image[] potImages;
-	public AudioClip mealCompleteSound;
+    public AudioClip mealCompleteSound;
+
+    public UnityEngine.UI.Button tappySkillButton;
+    public GameObject tappyLockSprite;
+
+    public UnityEngine.UI.Button oguSkillButton;
+    public GameObject oguLockSprite;
 
     private int completedMeals = 0;
-	private AudioSource audioSource;
-	
-	void Start()
+    private AudioSource audioSource;
+
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (tappySkillButton != null)
+            tappySkillButton.interactable = false;
+
+        if (tappyLockSprite != null)
+            tappyLockSprite.SetActive(true);
+
+        if (oguSkillButton != null)
+            oguSkillButton.interactable = false;
+
+        if (oguLockSprite != null)
+            oguLockSprite.SetActive(true);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -24,12 +42,25 @@ public class PotSpriteTrigger : MonoBehaviour
                 potImages[completedMeals].sprite = coloredPotSprite;
                 completedMeals++;
 
-                Debug.Log("Meal " + completedMeals + " completed!");
-				
-				if (mealCompleteSound != null && audioSource != null)
+
+                if (completedMeals == 1 && tappySkillButton != null)
                 {
-                    audioSource.PlayOneShot(mealCompleteSound);
+                    tappySkillButton.interactable = true;
+                    if (tappyLockSprite != null)
+                        tappyLockSprite.SetActive(false);
+                    Debug.Log("Tappy Skill Button is now enabled!");
                 }
+
+                if (completedMeals == 2 && oguSkillButton != null)
+                {
+                    oguSkillButton.interactable = true;
+                    if (oguLockSprite != null)
+                        oguLockSprite.SetActive(false);
+                    Debug.Log("Ogu Skill Button is now enabled!");
+                }
+
+                if (mealCompleteSound != null && audioSource != null)
+                    audioSource.PlayOneShot(mealCompleteSound);
 
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 if (player != null)
@@ -50,9 +81,8 @@ public class PotSpriteTrigger : MonoBehaviour
 
             Destroy(other.gameObject);
         }
-
-
     }
+
     public int GetCompletedMeals()
     {
         return completedMeals;

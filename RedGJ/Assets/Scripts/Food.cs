@@ -47,7 +47,7 @@ public class Food : MonoBehaviour
                 if (Timer.instance != null &&
                    (OguFeverManager.instance == null || !OguFeverManager.instance.IsFeverActive()))
                 {
-                    Timer.instance.DecreaseTime(30f);
+                    Timer.instance.DecreaseTime(20f);
                 }
 
                 Destroy(this.gameObject);
