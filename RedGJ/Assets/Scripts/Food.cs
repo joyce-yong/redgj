@@ -3,12 +3,11 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     private bool isStacked = false;
-    private static Transform topOfStack = null; // shared among all food
-    private static Transform playerTransform;   // cached player position
+    private static Transform topOfStack = null; 
+    private static Transform playerTransform;   
 
     void Start()
-    {
-        // Cache player transform (optional but useful)
+    { 
         if (playerTransform == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -16,7 +15,7 @@ public class Food : MonoBehaviour
                 playerTransform = playerObj.transform;
         }
 
-        // Ignore floor collisions
+
         GameObject[] floorObjects = GameObject.FindGameObjectsWithTag("Floor");
         Collider2D myCollider = GetComponent<Collider2D>();
 
@@ -35,6 +34,7 @@ public class Food : MonoBehaviour
         if (!isStacked && Timer.gameStarted)
         {
             transform.position -= new Vector3(0f, 0.12f, 0f);
+
             if (transform.position.y < -6f)
             {
                 if (Timer.instance != null)
@@ -43,16 +43,15 @@ public class Food : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
-                
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isStacked) return;
 
-        if (collision.CompareTag("Player"))
+        // first item stick only, then the following nid to collide on the top stack to stick
+        if ((topOfStack == null && collision.CompareTag("Player")) || collision.transform == topOfStack)
         {
             Transform stackTarget = topOfStack == null ? playerTransform : topOfStack;
 
@@ -62,15 +61,21 @@ public class Food : MonoBehaviour
         }
     }
 
+
     private void StackOn(Transform target)
     {
         isStacked = true;
 
         transform.parent = target;
 
+        // food heightttt
+        float myHalfHeight = GetComponent<SpriteRenderer>().bounds.size.y / 2f;
+        float targetHalfHeight = target.GetComponent<SpriteRenderer>().bounds.size.y / 2f;
+
         Vector3 newPos = target.position;
-        newPos.y += 0.5f;
+        newPos.y += targetHalfHeight + myHalfHeight;
         transform.position = newPos;
+
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -85,9 +90,9 @@ public class Food : MonoBehaviour
             col.isTrigger = false;
         }
     }
-	
-	public static void ResetStack()
-	{
-		topOfStack = null;
-	}
+
+    public static void ResetStack()
+    {
+        topOfStack = null;
+    }
 }
