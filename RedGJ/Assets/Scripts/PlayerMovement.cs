@@ -3,8 +3,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    private Rigidbody2D rb;
 
+    private Rigidbody2D rb;
+    private bool isDragging = false;
+    private Vector3 offset;
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.z = 0f;
 
+            // Check if clicked on self using OverlapPoint
             Collider2D hit = Physics2D.OverlapPoint(mouseWorldPos);
             if (hit != null && hit.gameObject == gameObject)
             {
@@ -25,11 +28,24 @@ public class PlayerMovement : MonoBehaviour
                 offset = transform.position - mouseWorldPos;
             }
         }
-        else if (Input.GetMouseButtonUp(0))
+
+        if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
-            rb.linearVelocity = Vector2.zero;
         }
     }
 
+    void FixedUpdate()
+    {
+        if (isDragging)
+        {
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPos.z = 0f;
+
+            Vector3 targetPosition = mouseWorldPos + offset;
+            Vector2 smoothedPosition = Vector2.Lerp(rb.position, targetPosition, moveSpeed * Time.fixedDeltaTime);
+
+            rb.MovePosition(smoothedPosition);
+        }
+    }
 }
