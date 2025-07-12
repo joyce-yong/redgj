@@ -10,14 +10,14 @@ EditorBuildSettings:
     guid: 7a57754171804294895dba0ca364bdd6
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
-    guid: 90ff2084e1b6e954ea8064e5f4fd9926
+    guid: b5443c3f0deadcb45b544d32d45dcd0d
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: b666b8b177485df4594d5d13219a4f87
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 99d6a22d7919c5449ae4313b1ff17d03
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutorialScene.unity
     guid: 306c89e2ca3a7d44794f9235ec43df60
   - enabled: 0
