@@ -3,11 +3,14 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     private bool isStacked = false;
-    private static Transform topOfStack = null; 
-    private static Transform playerTransform;   
+    private static Transform topOfStack = null;
+    private static Transform playerTransform;
+
+    public AudioClip stackSound;               // Sound to play when stacked
+    private AudioSource audioSource;           // AudioSource component
 
     void Start()
-    { 
+    {
         if (playerTransform == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -15,6 +18,7 @@ public class Food : MonoBehaviour
                 playerTransform = playerObj.transform;
         }
 
+        audioSource = GetComponent<AudioSource>();
 
         GameObject[] floorObjects = GameObject.FindGameObjectsWithTag("Floor");
         Collider2D myCollider = GetComponent<Collider2D>();
@@ -49,6 +53,7 @@ public class Food : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isStacked) return;
+
         if ((topOfStack == null && collision.CompareTag("Player")) || collision.transform == topOfStack)
         {
             Transform stackTarget = topOfStack == null ? playerTransform : topOfStack;
@@ -59,21 +64,24 @@ public class Food : MonoBehaviour
         }
     }
 
-
     private void StackOn(Transform target)
     {
         isStacked = true;
 
+        // ✅ Play sound effect when stacked
+        if (stackSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(stackSound);
+        }
+
         transform.parent = target;
 
-        // food heightttt
         float myHalfHeight = GetComponent<SpriteRenderer>().bounds.size.y / 2f;
         float targetHalfHeight = target.GetComponent<SpriteRenderer>().bounds.size.y / 2f;
 
         Vector3 newPos = target.position;
         newPos.y += targetHalfHeight + myHalfHeight;
         transform.position = newPos;
-
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)

@@ -157,15 +157,20 @@ public class Timer : MonoBehaviour
         gameEnded = true;
         gameStarted = false;
 
-        if (win)
-        {
-            //winText.gameObject.SetActive(true);
-			SceneManager.LoadScene(sceneName);
-        }
-        else
-        {
-            //loseText.gameObject.SetActive(true);
-			SceneManager.LoadScene(sceneName2);
-        }
+        StartCoroutine(DelayedSceneLoad(win));
     }
+	
+	IEnumerator DelayedSceneLoad(bool win)
+	{
+		yield return new WaitForSeconds(2f);
+
+		if (win)
+		{
+			SceneManager.LoadScene(sceneName);
+		}
+		else
+		{
+			SceneManager.LoadScene(sceneName2);
+		}
+	}
 }
