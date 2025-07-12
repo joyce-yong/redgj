@@ -28,6 +28,8 @@ public class Timer : MonoBehaviour
 	
 	public string sceneName, sceneName2;
 
+    private bool isTimeFrozenExternally = false;
+
     void Awake()
     {
         instance = this;
@@ -64,21 +66,19 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (timerRunning && !gameEnded)
+        if (timerRunning && !gameEnded && !isTimeFrozenExternally)
         {
             currentTime -= Time.deltaTime;
             currentTime = Mathf.Clamp(currentTime, 0, timerDuration);
-
             UpdateTimerText();
 
             if (currentTime <= 0)
             {
-                // Check if player completed 3 meals
                 bool win = potTracker != null && potTracker.GetCompletedMeals() >= 3;
                 EndGame(win);
             }
-
         }
+
     }
 
     void UpdateTimerText()
@@ -90,17 +90,17 @@ public class Timer : MonoBehaviour
 
     public void DecreaseTime(float amount)
     {
-        if (timerRunning && !gameEnded)
+        if (timerRunning && !gameEnded && !isTimeFrozenExternally)
         {
             currentTime -= amount;
             currentTime = Mathf.Clamp(currentTime, 0, timerDuration);
             UpdateTimerText();
 
-            if (amount >= 10f) 
+            if (amount >= 10f)
             {
                 ShowMinus10();
             }
-        }
+        }  
     }
 
 
@@ -164,4 +164,10 @@ public class Timer : MonoBehaviour
 			SceneManager.LoadScene(sceneName2);
 		}
 	}
+
+    public void SetTimeFrozen(bool freeze)
+    {
+        isTimeFrozenExternally = freeze;
+    }
+
 }
