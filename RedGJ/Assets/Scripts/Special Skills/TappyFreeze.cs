@@ -67,10 +67,10 @@ public class TappyFreezeManager : MonoBehaviour
         {
             freezeCountdownText.gameObject.SetActive(true);
             freezeCountdownText.fontSize = 120;
-            freezeCountdownText.text = "TappyFreeze!";
+            freezeCountdownText.text = "TAPPY FREEZE!";
         }
 
-        yield return new WaitForSeconds(1f); // Show "TappyFreeze!" for 1 second
+        yield return new WaitForSeconds(1f); 
 
         float countdown = freezeDuration;
 

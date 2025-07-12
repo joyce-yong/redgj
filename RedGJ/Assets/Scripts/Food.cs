@@ -44,14 +44,17 @@ public class Food : MonoBehaviour
 
             if (transform.position.y < -6f)
             {
-                if (Timer.instance != null)
+                if (Timer.instance != null &&
+                   (OguFeverManager.instance == null || !OguFeverManager.instance.IsFeverActive()))
                 {
-                    Timer.instance.DecreaseTime(10f);
+                    Timer.instance.DecreaseTime(30f);
                 }
+
                 Destroy(this.gameObject);
             }
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

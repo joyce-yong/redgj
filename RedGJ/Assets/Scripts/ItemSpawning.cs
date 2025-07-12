@@ -21,26 +21,49 @@ public class ItemSpawning : MonoBehaviour
             float pos_x = Random.Range(-0.9f, 2.5f);
             GameObject spawned;
 
-            if (Random.value < biggieSpawnChance)
+            bool inFever = OguFeverManager.instance != null && OguFeverManager.instance.IsFeverActive();
+
+            if (!inFever && Random.value < biggieSpawnChance)
             {
-                // Biggie
+                // Safety check for biggie prefab
+                if (biggiePrefab == null)
+                {
+                    Debug.LogWarning("Biggie prefab is not assigned!");
+                    return;
+                }
+
                 spawned = Instantiate(biggiePrefab, new Vector3(pos_x, 3.0f, 0.1f), Quaternion.identity);
             }
             else
             {
-                // food
+                // SAFETY CHECK for food prefab array
+                if (gm.Length == 0)
+                {
+                    Debug.LogWarning("No food prefabs assigned to gm array!");
+                    return;
+                }
+
                 int index = Random.Range(0, gm.Length);
+                if (gm[index] == null)
+                {
+                    Debug.LogWarning("Food prefab at index " + index + " is null!");
+                    return;
+                }
+
                 spawned = Instantiate(gm[index], new Vector3(pos_x, 3.0f, 0.1f), Quaternion.identity);
             }
 
+            // Assign gravity
             Rigidbody2D rb = spawned.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 rb.gravityScale = 0.005f;
             }
 
-            timer = 2.0f;
+            // Spawn rate
+            timer = inFever ? 0.3f : 2.0f;
         }
-
     }
+
+
 }
