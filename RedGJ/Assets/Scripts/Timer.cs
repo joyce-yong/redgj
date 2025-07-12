@@ -1,12 +1,11 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using static UnityEngine.Rendering.BoolParameter;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
-{
+{	
     public float timerDuration = 120f;
     private float currentTime;
 
@@ -25,8 +24,10 @@ public class Timer : MonoBehaviour
     public static Timer instance;
 
     private PotSpriteTrigger potTracker;
-	
-	public string sceneName, sceneName2;
+
+    public GameObject tutorialPanel;
+
+    public string sceneName, sceneName2;
 
     void Awake()
     {
@@ -41,6 +42,23 @@ public class Timer : MonoBehaviour
         gameStarted = false;
 
         potTracker = FindObjectOfType<PotSpriteTrigger>();
+
+        StartCoroutine(StartWithTutorial());
+    }
+
+    IEnumerator StartWithTutorial()
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(10f);
+
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(false);
+        }
 
         StartCoroutine(ShowStartCountdown());
     }
@@ -58,7 +76,6 @@ public class Timer : MonoBehaviour
         startCountdownText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(true);
         timerRunning = true;
-
         gameStarted = true;
     }
 
@@ -73,11 +90,9 @@ public class Timer : MonoBehaviour
 
             if (currentTime <= 0)
             {
-                // Check if player completed 3 meals
                 bool win = potTracker != null && potTracker.GetCompletedMeals() >= 3;
                 EndGame(win);
             }
-
         }
     }
 
@@ -102,7 +117,6 @@ public class Timer : MonoBehaviour
             }
         }
     }
-
 
     void ShowMinus10()
     {
@@ -150,18 +164,18 @@ public class Timer : MonoBehaviour
 
         StartCoroutine(DelayedSceneLoad(win));
     }
-	
-	IEnumerator DelayedSceneLoad(bool win)
-	{
-		yield return new WaitForSeconds(2f);
 
-		if (win)
-		{
-			SceneManager.LoadScene(sceneName);
-		}
-		else
-		{
-			SceneManager.LoadScene(sceneName2);
-		}
-	}
+    IEnumerator DelayedSceneLoad(bool win)
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (win)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName2);
+        }
+    }
 }
