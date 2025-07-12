@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+		if (GameState.IsPausedBySkillTrigger) return;
+		
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -40,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+		if (GameState.IsPausedBySkillTrigger) return;
+		
         if (isDragging)
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

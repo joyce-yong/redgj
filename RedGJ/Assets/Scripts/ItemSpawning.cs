@@ -12,20 +12,7 @@ public class ItemSpawning : MonoBehaviour
 
     void Update()
     {
-        if (!Timer.gameStarted)
-        {
-            wasGameStarted = false;
-            elapsedGameTime = 0f;
-            return;
-        }
-
-        if (!wasGameStarted)
-        {
-            wasGameStarted = true;
-            elapsedGameTime = 0f;
-        }
-
-        elapsedGameTime += Time.deltaTime;
+        if (!Timer.gameStarted || GameState.IsPausedBySkillTrigger) return;
 
         if (timer > 0)
         {

@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+	public string sceneName;
     public AudioSource audioSource;
     public float delayBeforeLoad = 0.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +33,7 @@ public class MainMenu : MonoBehaviour
             yield return new WaitForSeconds(audioSource.clip.length);
         }
 
-        SceneManager.LoadSceneAsync(1); // or SceneManager.LoadScene("YourSceneName");
+        SceneManager.LoadScene(sceneName);
     }
     public void QuitGame()
     {

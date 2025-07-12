@@ -1,27 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
     public string sceneName, sceneName2;
+    public float delay = 0.5f;
 
-    void Start()
-    {
-		
-    }
-    void Update()
-    {
-		
-    }
     public void playGame()
     {
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(LoadSceneWithDelay(sceneName));
     }
-	public void backToMenu()
+
+    public void backToMenu()
     {
-        SceneManager.LoadScene(sceneName2);
+        StartCoroutine(LoadSceneWithDelay(sceneName2));
+    }
+
+    IEnumerator LoadSceneWithDelay(string scene)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(scene);
     }
 }
