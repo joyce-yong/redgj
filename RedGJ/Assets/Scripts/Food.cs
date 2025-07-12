@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Food : MonoBehaviour
 {
@@ -6,8 +7,10 @@ public class Food : MonoBehaviour
     private static Transform topOfStack = null;
     private static Transform playerTransform;
 
-    public AudioClip stackSound;               // Sound to play when stacked
-    private AudioSource audioSource;           // AudioSource component
+    public AudioClip stackSound;               
+    private AudioSource audioSource;          
+
+    private static List<Transform> stackedFoods = new List<Transform>();
 
     void Start()
     {
@@ -41,14 +44,17 @@ public class Food : MonoBehaviour
 
             if (transform.position.y < -6f)
             {
-                if (Timer.instance != null)
+                if (Timer.instance != null &&
+                   (OguFeverManager.instance == null || !OguFeverManager.instance.IsFeverActive()))
                 {
-                    Timer.instance.DecreaseTime(10f);
+                    Timer.instance.DecreaseTime(20f);
                 }
+
                 Destroy(this.gameObject);
             }
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -61,6 +67,7 @@ public class Food : MonoBehaviour
             StackOn(stackTarget);
 
             topOfStack = this.transform;
+            stackedFoods.Add(this.transform); 
         }
     }
 
@@ -68,7 +75,6 @@ public class Food : MonoBehaviour
     {
         isStacked = true;
 
-        // ✅ Play sound effect when stacked
         if (stackSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(stackSound);
@@ -100,5 +106,33 @@ public class Food : MonoBehaviour
     public static void ResetStack()
     {
         topOfStack = null;
+        stackedFoods.Clear();
+    }
+
+    public static void RemoveTopStackedFoods(int count)
+    {
+        for (int i = 0; i < count && stackedFoods.Count > 0; i++)
+        {
+            Transform top = stackedFoods[stackedFoods.Count - 1];
+            stackedFoods.RemoveAt(stackedFoods.Count - 1);
+            if (top != null)
+            {
+                Object.Destroy(top.gameObject);
+            }
+        }
+
+        if (stackedFoods.Count > 0)
+        {
+            topOfStack = stackedFoods[stackedFoods.Count - 1];
+        }
+        else
+        {
+            topOfStack = null;
+        }
+    }
+
+    public static Transform GetTopOfStack()
+    {
+        return topOfStack;
     }
 }

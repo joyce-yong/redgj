@@ -198,7 +198,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      biggiefall1_0: 6328571616353861318
+      biggiefall1_1: -1452678745022395936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

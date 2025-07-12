@@ -29,6 +29,8 @@ public class Timer : MonoBehaviour
 
     public string sceneName, sceneName2;
 
+    private bool isTimeFrozenExternally = false;
+
     void Awake()
     {
         instance = this;
@@ -95,6 +97,7 @@ public class Timer : MonoBehaviour
 		}
 	}
 
+
     void UpdateTimerText()
     {
         int minutes = Mathf.FloorToInt(currentTime / 60);
@@ -104,17 +107,17 @@ public class Timer : MonoBehaviour
 
     public void DecreaseTime(float amount)
     {
-        if (timerRunning && !gameEnded)
+        if (timerRunning && !gameEnded && !isTimeFrozenExternally)
         {
             currentTime -= amount;
             currentTime = Mathf.Clamp(currentTime, 0, timerDuration);
             UpdateTimerText();
 
-            if (amount >= 10f) 
+            if (amount >= 10f)
             {
                 ShowMinus10();
             }
-        }
+        }  
     }
 
     void ShowMinus10()
@@ -163,6 +166,7 @@ public class Timer : MonoBehaviour
 
         StartCoroutine(DelayedSceneLoad(win));
     }
+
 
     IEnumerator DelayedSceneLoad(bool win)
     {
