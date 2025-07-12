@@ -85,6 +85,17 @@ public class Timer : MonoBehaviour
         timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
+    public void DecreaseTime(float amount)
+    {
+        if (timerRunning && !gameEnded)
+        {
+            currentTime -= amount;
+            currentTime = Mathf.Clamp(currentTime, 0, timerDuration);
+            UpdateTimerText();
+        }
+    }
+
+
     public void EndGame(bool win)
     {
         if (gameEnded) return;
