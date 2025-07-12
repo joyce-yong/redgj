@@ -11,10 +11,7 @@ public class Timer : MonoBehaviour
     private float currentTime;
 
     public TextMeshProUGUI minusText;
-
     public TextMeshProUGUI timerText;
-    public TextMeshProUGUI winText;
-    public TextMeshProUGUI loseText;
     public TextMeshProUGUI startCountdownText;
 
     public float fadeDuration = 0.5f;
@@ -39,8 +36,6 @@ public class Timer : MonoBehaviour
     void Start()
     {
         currentTime = timerDuration;
-        winText.gameObject.SetActive(false);
-        loseText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);
         minusText.gameObject.SetActive(false);
         gameStarted = false;
@@ -83,10 +78,6 @@ public class Timer : MonoBehaviour
                 EndGame(win);
             }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                EndGame(true);
-            }
         }
     }
 
