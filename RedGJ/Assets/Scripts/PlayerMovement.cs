@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 10f;
     private Rigidbody2D rb;
+
 
     void Start()
     {
@@ -14,22 +13,23 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPos.z = 0f;
 
-            if (touchPos.x < 0)
+            Collider2D hit = Physics2D.OverlapPoint(mouseWorldPos);
+            if (hit != null && hit.gameObject == gameObject)
             {
-                rb.AddForce(Vector2.left * moveSpeed);
-            }
-            else
-            {
-                rb.AddForce(Vector2.right * moveSpeed);
+                isDragging = true;
+                offset = transform.position - mouseWorldPos;
             }
         }
-        else
+        else if (Input.GetMouseButtonUp(0))
         {
+            isDragging = false;
             rb.linearVelocity = Vector2.zero;
         }
     }
+
 }

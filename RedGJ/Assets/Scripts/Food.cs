@@ -49,8 +49,6 @@ public class Food : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isStacked) return;
-
-        // first item stick only, then the following nid to collide on the top stack to stick
         if ((topOfStack == null && collision.CompareTag("Player")) || collision.transform == topOfStack)
         {
             Transform stackTarget = topOfStack == null ? playerTransform : topOfStack;
