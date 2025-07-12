@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: avoid the red hat guy
+  m_text: be careful of biggie
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea651948088026b449e9d03b305933b7, type: 2}
   m_sharedMaterial: {fileID: -2603362807524928431, guid: ea651948088026b449e9d03b305933b7, type: 2}
