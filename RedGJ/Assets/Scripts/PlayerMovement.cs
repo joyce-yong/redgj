@@ -5,12 +5,14 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 10f;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private bool isDragging = false;
     private Vector3 offset;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -20,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.z = 0f;
 
-            // Check if clicked on self using OverlapPoint
             Collider2D hit = Physics2D.OverlapPoint(mouseWorldPos);
             if (hit != null && hit.gameObject == gameObject)
             {
@@ -33,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         {
             isDragging = false;
         }
+
+        animator.SetBool("isMoving", isDragging);
     }
 
     void FixedUpdate()
