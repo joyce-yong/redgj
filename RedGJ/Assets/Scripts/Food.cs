@@ -50,8 +50,8 @@ public class Food : MonoBehaviour
     {
         if (isStacked) return;
 
-        // Allow stacking if touching player or top of current stack
-        if (collision.CompareTag("Player") || collision.transform == topOfStack)
+        // first item stick only, then the following need to be collide the top stack one to stick
+        if ((topOfStack == null && collision.CompareTag("Player")) || collision.transform == topOfStack)
         {
             Transform stackTarget = topOfStack == null ? playerTransform : topOfStack;
 
@@ -61,17 +61,21 @@ public class Food : MonoBehaviour
         }
     }
 
+
     private void StackOn(Transform target)
     {
         isStacked = true;
 
         transform.parent = target;
 
-        // Use sprite height for accurate stacking
-        float height = GetComponent<SpriteRenderer>().bounds.size.y;
+        // food heightttt
+        float myHalfHeight = GetComponent<SpriteRenderer>().bounds.size.y / 2f;
+        float targetHalfHeight = target.GetComponent<SpriteRenderer>().bounds.size.y / 2f;
+
         Vector3 newPos = target.position;
-        newPos.y += height;
+        newPos.y += targetHalfHeight + myHalfHeight;
         transform.position = newPos;
+
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
