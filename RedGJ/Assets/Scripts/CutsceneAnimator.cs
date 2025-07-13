@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.Rendering.LookDev;
 
 public class CutsceneAnimator : MonoBehaviour
 {
@@ -23,9 +24,12 @@ public class CutsceneAnimator : MonoBehaviour
 	public AudioClip screamSound;
 	public AudioClip popSound;
 
+    public GameObject fadePanel;
+
     void Start()
     {
         StartCoroutine(PlayCutscene());
+        fadePanel.gameObject.SetActive(true);
     }
 
     IEnumerator PlayCutscene()
@@ -143,7 +147,9 @@ public class CutsceneAnimator : MonoBehaviour
         yield return StartCoroutine(PlayRunLoop(runImages13And14, 9, 0.15f, hideAfter: false));
         
 		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene("GameScene");
+		//SceneManager.LoadScene("GameScene");
+        FindObjectOfType<FadeOut>().FadeToScene("LevelScene");
+
 
     }
     IEnumerator FadeOut(CanvasGroup cg)
