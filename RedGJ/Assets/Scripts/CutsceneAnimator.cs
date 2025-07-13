@@ -25,8 +25,6 @@ public class CutsceneAnimator : MonoBehaviour
 
     void Start()
     {
-		 if (audioSource != null && runSound != null)
-			audioSource.PlayOneShot(runSound);
         StartCoroutine(PlayCutscene());
     }
 
@@ -77,6 +75,10 @@ public class CutsceneAnimator : MonoBehaviour
 
 
         yield return StartCoroutine(ExplodeIn(explosionImage));
+		
+		if (crashSound != null && audioSource != null)
+			audioSource.PlayOneShot(crashSound);
+		
         yield return new WaitForSeconds(displayTime);
 
         CanvasGroup explosionCG = explosionImage.GetComponent<CanvasGroup>();
@@ -108,6 +110,9 @@ public class CutsceneAnimator : MonoBehaviour
         }
 
         // Step 2: 
+		if (screamSound != null && audioSource != null)
+			audioSource.PlayOneShot(screamSound);
+		
         yield return StartCoroutine(PlayRunLoop(screamFrames9To11, 4, 0.1f));
 
         // Step 3: 
@@ -117,10 +122,12 @@ public class CutsceneAnimator : MonoBehaviour
         {
             staticImage12.alpha = 0;
             staticImage12.gameObject.SetActive(true);
+			if (popSound != null && audioSource != null)
+				audioSource.PlayOneShot(popSound);
+			
             yield return StartCoroutine(FadeIn(staticImage12));
             yield return new WaitForSeconds(displayTime);
         }
-
 
 
         // --- 13、14RUN
@@ -133,11 +140,10 @@ public class CutsceneAnimator : MonoBehaviour
             }
         }
 
-
         yield return StartCoroutine(PlayRunLoop(runImages13And14, 9, 0.15f, hideAfter: false));
         
 		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene("LoadingScene");
+		SceneManager.LoadScene("GameScene");
 
     }
     IEnumerator FadeOut(CanvasGroup cg)
