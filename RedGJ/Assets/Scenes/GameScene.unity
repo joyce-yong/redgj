@@ -895,7 +895,7 @@ MonoBehaviour:
   - {fileID: 748924012}
   - {fileID: 159272201}
   speed: 15
-  waitDurationAtSecondPoint: 4
+  waitDurationAtSecondPoint: 3
 --- !u!82 &225535701
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5269,7 +5269,7 @@ MonoBehaviour:
   - {fileID: 748924012}
   - {fileID: 159272201}
   speed: 15
-  waitDurationAtSecondPoint: 4
+  waitDurationAtSecondPoint: 3
 --- !u!212 &1682328329
 SpriteRenderer:
   m_ObjectHideFlags: 0
