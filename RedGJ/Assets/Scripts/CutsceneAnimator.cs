@@ -11,14 +11,22 @@ public class CutsceneAnimator : MonoBehaviour
     public RectTransform dropImage; // P8
     public CanvasGroup[] screamImages; // P9–11
     public CanvasGroup[] screamFrames9To11;
-    public CanvasGroup staticImage12;            // P12
+    public CanvasGroup staticImage12;  // P12
     public CanvasGroup[] runImages13And14;//1314
 
     public float fadeTime = 1f;
     public float displayTime = 1f;
+	
+	public AudioSource audioSource;
+	public AudioClip runSound;
+	public AudioClip crashSound;
+	public AudioClip screamSound;
+	public AudioClip popSound;
 
     void Start()
     {
+		 if (audioSource != null && runSound != null)
+			audioSource.PlayOneShot(runSound);
         StartCoroutine(PlayCutscene());
     }
 
@@ -52,6 +60,10 @@ public class CutsceneAnimator : MonoBehaviour
                 cg.alpha = 0;
             }
         }
+		
+		if (audioSource != null && runSound != null)
+			audioSource.PlayOneShot(runSound);
+		
         yield return StartCoroutine(PlayRunLoop(runFrames, 3, 0.15f));
 
 
