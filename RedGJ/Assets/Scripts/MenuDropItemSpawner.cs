@@ -4,13 +4,9 @@ public class MenuDropItemSpawner : MonoBehaviour
 {
     [Header("Drop Settings")]
     public GameObject[] itemPrefabs;     
-    public float spawnInterval = 0.03f;   
+    public float spawnInterval = 0.1f;   
     public float xRange = 8f;           
-    public float spawnY = 10f;   
-
-	[Header("Stop Spawning")]
-	public float stopYThreshold = -70f;
-	private bool stopSpawning = false;
+    public float spawnY = 10f;           
     
     void Start()
     {
@@ -25,16 +21,13 @@ public class MenuDropItemSpawner : MonoBehaviour
         Vector3 spawnPos = new Vector3(xPos, spawnY, 0f);
 
         int index = Random.Range(0, itemPrefabs.Length);
-        GameObject newItem = Instantiate(itemPrefabs[index], spawnPos, Quaternion.identity);
-		
-		DropItemChecker checker = newItem.AddComponent<DropItemChecker>();
-        checker.spawner = this;
+        Instantiate(itemPrefabs[index], spawnPos, Quaternion.identity);
     }
     
 
-    public void StopSpawning()
+    // Update is called once per frame
+    void Update()
     {
-        stopSpawning = true;
-        CancelInvoke(nameof(SpawnItem));
+        
     }
 }
