@@ -7,8 +7,8 @@ public class Food : MonoBehaviour
     private static Transform topOfStack = null;
     private static Transform playerTransform;
 
-    public AudioClip stackSound;               
-    private AudioSource audioSource;          
+    public AudioClip stackSound;
+    private AudioSource audioSource;
 
     private static List<Transform> stackedFoods = new List<Transform>();
 
@@ -40,7 +40,11 @@ public class Food : MonoBehaviour
     {
         if (!isStacked && Timer.gameStarted)
         {
+            // Falling movement
             transform.position -= new Vector3(0f, 0.12f, 0f);
+
+            // Wriggle/rotate a little bit as it falls
+            transform.Rotate(0f, 0f, Random.Range(-7f, 7f));
 
             if (transform.position.y < -6f)
             {
@@ -55,7 +59,6 @@ public class Food : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isStacked) return;
@@ -67,7 +70,7 @@ public class Food : MonoBehaviour
             StackOn(stackTarget);
 
             topOfStack = this.transform;
-            stackedFoods.Add(this.transform); 
+            stackedFoods.Add(this.transform);
         }
     }
 
@@ -101,6 +104,9 @@ public class Food : MonoBehaviour
         {
             col.isTrigger = false;
         }
+
+        // Reset rotation when stacked
+        transform.rotation = Quaternion.identity;
     }
 
     public static void ResetStack()

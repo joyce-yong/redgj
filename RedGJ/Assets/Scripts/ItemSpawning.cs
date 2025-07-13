@@ -8,11 +8,12 @@ public class ItemSpawning : MonoBehaviour
     public GameObject[] gm;
     private float timer = 1f;
     private float elapsedGameTime = 0f;
-    private bool wasGameStarted = false;
 
     void Update()
     {
         if (!Timer.gameStarted || GameState.IsPausedBySkillTrigger) return;
+
+        elapsedGameTime += Time.deltaTime;
 
         if (timer > 0)
         {
@@ -35,6 +36,7 @@ public class ItemSpawning : MonoBehaviour
                 }
 
                 spawned = Instantiate(biggiePrefab, new Vector3(pos_x, 3.0f, 0.1f), Quaternion.identity);
+                Debug.Log("Biggie spawned!");
             }
             else
             {
@@ -58,6 +60,10 @@ public class ItemSpawning : MonoBehaviour
             if (rb != null)
             {
                 rb.gravityScale = 0.005f;
+
+                // Optional: physics-based wriggle
+                float randomTorque = Random.Range(-10f, 10f);
+                rb.AddTorque(randomTorque);
             }
 
             timer = inFever ? 0.3f : 2.0f;

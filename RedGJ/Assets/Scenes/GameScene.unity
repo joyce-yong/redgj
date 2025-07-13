@@ -6357,7 +6357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   biggiePrefab: {fileID: 6016833097971932631, guid: 7dd75c584790d3e4c9af39c5d032733d, type: 3}
-  biggieSpawnChance: 0.905
+  biggieSpawnChance: 0.1
   gm:
   - {fileID: 1625479909542303492, guid: 4da1539af9a56c04e9a89d9d8ceebf8b, type: 3}
   - {fileID: 6285073625498708647, guid: 219e04267599d074fad3071c8f5eaf96, type: 3}
