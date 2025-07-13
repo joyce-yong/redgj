@@ -31,6 +31,11 @@ public class Timer : MonoBehaviour
 
     private bool isTimeFrozenExternally = false;
 
+    public AudioClip minus10Sound;
+    private AudioSource audioSource;
+
+    public TextMeshProUGUI tutorialCountdownText;
+
     void Awake()
     {
         instance = this;
@@ -38,6 +43,8 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         currentTime = timerDuration;
         timerText.gameObject.SetActive(false);
         minusText.gameObject.SetActive(false);
@@ -55,7 +62,23 @@ public class Timer : MonoBehaviour
             tutorialPanel.SetActive(true);
         }
 
-        yield return new WaitForSeconds(10f);
+        if (tutorialCountdownText != null)
+        {
+            tutorialCountdownText.gameObject.SetActive(true);
+
+            for (int i = 10; i > 0; i--)
+            {
+                tutorialCountdownText.text = "Game starts in: " + i;
+                yield return new WaitForSeconds(1f);
+            }
+
+            tutorialCountdownText.gameObject.SetActive(false);
+        }
+        else
+        {
+            // Fallback if text is missing
+            yield return new WaitForSeconds(10f);
+        }
 
         if (tutorialPanel != null)
         {
@@ -70,7 +93,7 @@ public class Timer : MonoBehaviour
         startCountdownText.gameObject.SetActive(true);
 
         startCountdownText.text = "Ready...";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         startCountdownText.text = "Start!";
         yield return new WaitForSeconds(1f);
@@ -131,10 +154,15 @@ public class Timer : MonoBehaviour
     IEnumerator FadeMinus10()
     {
         minusText.text = "-10";
-        minusText.color = new Color(1f, 0f, 0f, 0f); // red and transparent
+        minusText.color = new Color(1f, 0f, 0f, 0f); // red & transparent
         minusText.gameObject.SetActive(true);
 
-        // Fade In
+        if (audioSource != null && minus10Sound != null)
+        {
+            audioSource.PlayOneShot(minus10Sound);
+        }
+
+
         for (float t = 0f; t < fadeDuration; t += Time.deltaTime)
         {
             float alpha = t / fadeDuration;
@@ -145,7 +173,7 @@ public class Timer : MonoBehaviour
 
         yield return new WaitForSeconds(displayTime);
 
-        // Fade Out
+
         for (float t = 0f; t < fadeDuration; t += Time.deltaTime)
         {
             float alpha = 1f - (t / fadeDuration);
@@ -155,6 +183,7 @@ public class Timer : MonoBehaviour
         minusText.color = new Color(1f, 0f, 0f, 0f);
         minusText.gameObject.SetActive(false);
     }
+
 
     public void EndGame(bool win)
     {

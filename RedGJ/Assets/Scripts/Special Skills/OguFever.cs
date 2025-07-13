@@ -6,7 +6,7 @@ public class OguFeverManager : MonoBehaviour
 {
     public static OguFeverManager instance;
 
-    public float feverDuration = 5f;
+    public float feverDuration = 8f;
     private bool isFeverActive = false;
 
     [Header("UI")]

@@ -40,11 +40,7 @@ public class Food : MonoBehaviour
     {
         if (!isStacked && Timer.gameStarted)
         {
-            // Falling movement
             transform.position -= new Vector3(0f, 0.12f, 0f);
-
-            // Wriggle/rotate a little bit as it falls
-            transform.Rotate(0f, 0f, Random.Range(-7f, 7f));
 
             if (transform.position.y < -6f)
             {
@@ -58,6 +54,7 @@ public class Food : MonoBehaviour
             }
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -104,9 +101,6 @@ public class Food : MonoBehaviour
         {
             col.isTrigger = false;
         }
-
-        // Reset rotation when stacked
-        transform.rotation = Quaternion.identity;
     }
 
     public static void ResetStack()
