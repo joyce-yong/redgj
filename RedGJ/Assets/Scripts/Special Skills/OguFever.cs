@@ -9,6 +9,10 @@ public class OguFeverManager : MonoBehaviour
     public float feverDuration = 8f;
     private bool isFeverActive = false;
 
+    public GameObject feverSpritePrefab;
+    private GameObject spawnedFeverSprite;
+
+
     [Header("UI")]
     public TextMeshProUGUI feverCountdownText; 
     public Vector3 countdownOffset = new Vector3(0, 2, 0); 
@@ -42,6 +46,12 @@ public class OguFeverManager : MonoBehaviour
     {
         isFeverActive = true;
         Debug.Log("Ogu Fever Started!");
+
+        if (feverSpritePrefab != null)
+        {
+            spawnedFeverSprite = Instantiate(feverSpritePrefab);
+        }
+
 
         if (feverAudioSource != null)
         {
@@ -101,6 +111,12 @@ public class OguFeverManager : MonoBehaviour
         {
             mainCamera.backgroundColor = originalColor;
         }
+
+        if (spawnedFeverSprite != null)
+        {
+            Destroy(spawnedFeverSprite);
+        }
+
 
         isFeverActive = false;
         Debug.Log("Ogu Fever Ended.");
