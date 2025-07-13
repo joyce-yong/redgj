@@ -21,7 +21,7 @@ public class ItemSpawning : MonoBehaviour
         }
         else
         {
-            float pos_x = Random.Range(-0.9f, 2.5f);
+            float pos_x = Random.Range(-0.9f, 2f);
             GameObject spawned;
 
             bool inFever = OguFeverManager.instance != null && OguFeverManager.instance.IsFeverActive();

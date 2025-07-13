@@ -31,6 +31,12 @@ public class Timer : MonoBehaviour
 
     private bool isTimeFrozenExternally = false;
 
+    public TextMeshProUGUI tutorialCountdownText;
+
+    public AudioClip minusTenSound; // Assign this in the Inspector
+    private AudioSource audioSource;
+
+
     void Awake()
     {
         instance = this;
@@ -46,6 +52,8 @@ public class Timer : MonoBehaviour
         potTracker = FindObjectOfType<PotSpriteTrigger>();
 
         StartCoroutine(StartWithTutorial());
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     IEnumerator StartWithTutorial()
@@ -55,7 +63,22 @@ public class Timer : MonoBehaviour
             tutorialPanel.SetActive(true);
         }
 
-        yield return new WaitForSeconds(10f);
+        if (tutorialCountdownText != null)
+        {
+            tutorialCountdownText.gameObject.SetActive(true);
+
+            for (int i = 10; i > 0; i--)
+            {
+                tutorialCountdownText.text = "Game starts in: " + i;
+                yield return new WaitForSeconds(1f);
+            }
+
+            tutorialCountdownText.gameObject.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(10f);
+        }
 
         if (tutorialPanel != null)
         {
@@ -64,6 +87,7 @@ public class Timer : MonoBehaviour
 
         StartCoroutine(ShowStartCountdown());
     }
+
 
     IEnumerator ShowStartCountdown()
     {
@@ -116,8 +140,12 @@ public class Timer : MonoBehaviour
             if (amount >= 10f)
             {
                 ShowMinus10();
+                if (audioSource != null && minusTenSound != null)
+                {
+                    audioSource.PlayOneShot(minusTenSound);
+                }
             }
-        }  
+        }
     }
 
     void ShowMinus10()
