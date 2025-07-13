@@ -36,7 +36,6 @@ public class Timer : MonoBehaviour
     public AudioClip minusTenSound; // Assign this in the Inspector
     private AudioSource audioSource;
 
-    public GameObject fadePanel;
     void Awake()
     {
         instance = this;
@@ -44,7 +43,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        fadePanel.gameObject.SetActive(false);
+
         currentTime = timerDuration;
         timerText.gameObject.SetActive(false);
         minusText.gameObject.SetActive(false);
@@ -203,16 +202,15 @@ public class Timer : MonoBehaviour
 
         if (win)
         {
-            fadePanel.gameObject.SetActive(true);
-            FindObjectOfType<FadeOut>().FadeToScene(sceneName);
-            //SceneManager.LoadScene(sceneName);
+            
+            
+            SceneManager.LoadScene(sceneName);
 
         }
         else
         {
-            fadePanel.gameObject.SetActive(true);
-            FindObjectOfType<FadeOut>().FadeToScene(sceneName2);
-            //SceneManager.LoadScene(sceneName2);
+            
+            SceneManager.LoadScene(sceneName2);
         }
     }
 

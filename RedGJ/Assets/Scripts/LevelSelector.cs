@@ -7,7 +7,7 @@ public class LevelSelector : MonoBehaviour
     public Transform airplane;
     public float moveSpeed = 5f;
     public float zOffset = 10f;
-	public AudioSource moveSound;
+    public AudioSource moveSound;
 
     private Vector3 targetPos;
     private bool isMoving = false;
@@ -17,23 +17,25 @@ public class LevelSelector : MonoBehaviour
     {
         if (isMoving)
         {
-			if (!moveSound.isPlaying)
+            if (!moveSound.isPlaying)
                 moveSound.Play();
-			
+
             airplane.position = Vector3.MoveTowards(airplane.position, targetPos, moveSpeed * Time.deltaTime);
 
             if (Vector3.Distance(airplane.position, targetPos) < 0.1f)
             {
                 isMoving = false;
-				moveSound.Stop();
+                moveSound.Stop();
                 SceneManager.LoadScene(sceneToLoad);
+
+
             }
         }
-		else
-		{
-			if(moveSound.isPlaying)
-				moveSound.Stop();
-		}
+        else
+        {
+            if (moveSound.isPlaying)
+                moveSound.Stop();
+        }
     }
 
     public void OnLevelButtonClicked(string sceneName)
