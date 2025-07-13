@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 89b6608e0714cec4b985ff6ca44586f1
+guid: 09170d7aa6aa8ba408ff89c9e211ed6d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7867512708525955509
-    second: gametitle_0
+      213: -2007088085168793321
+    second: rescueadjusted_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,12 +139,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gametitle_0
+      name: rescueadjusted_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 7
-        width: 951
+        x: 3
+        y: 0
+        width: 943
         height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b99f81ef150f2d60800000000000000
-      internalID: 7867512708525955509
+      spriteID: 719589245046524e0800000000000000
+      internalID: -2007088085168793321
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gametitle_0: 7867512708525955509
+      rescueadjusted_0: -2007088085168793321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

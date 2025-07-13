@@ -124,7 +124,7 @@ public class CutsceneAnimator : MonoBehaviour
 
         yield return StartCoroutine(PlayRunLoop(runImages13And14, 9, 0.15f, hideAfter: false));
         
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene("LoadingScene");
 
     }
