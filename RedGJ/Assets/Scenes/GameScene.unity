@@ -6356,7 +6356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5175e54c73f4de34fa4fcbe6b2cd3f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biggiePrefab: {fileID: 6680702745190143685, guid: 6d12a82ab7a9ff447831b03fe9784ef9, type: 3}
+  biggiePrefab: {fileID: 6016833097971932631, guid: 7dd75c584790d3e4c9af39c5d032733d, type: 3}
   biggieSpawnChance: 0.905
   gm:
   - {fileID: 1625479909542303492, guid: 4da1539af9a56c04e9a89d9d8ceebf8b, type: 3}
@@ -6456,8 +6456,8 @@ SceneRoots:
   - {fileID: 1621729233}
   - {fileID: 1261492716}
   - {fileID: 389683806}
+  - {fileID: 1583509739}
   - {fileID: 295831439}
   - {fileID: 225535699}
-  - {fileID: 648283707}
-  - {fileID: 1583509739}
   - {fileID: 1682328330}
+  - {fileID: 648283707}
