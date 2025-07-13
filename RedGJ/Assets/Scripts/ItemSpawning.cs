@@ -8,7 +8,6 @@ public class ItemSpawning : MonoBehaviour
     public GameObject[] gm;
     private float timer = 1f;
     private float elapsedGameTime = 0f;
-    private bool wasGameStarted = false;
 
     void Update()
     {
@@ -61,11 +60,13 @@ public class ItemSpawning : MonoBehaviour
             if (rb != null)
             {
                 rb.gravityScale = 0.005f;
+
+                // Optional: physics-based wriggle
+                float randomTorque = Random.Range(-10f, 10f);
+                rb.AddTorque(randomTorque);
             }
 
             timer = inFever ? 0.3f : 2.0f;
         }
     }
-
-
 }
