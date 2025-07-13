@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CutsceneAnimator : MonoBehaviour
 {
@@ -123,10 +124,8 @@ public class CutsceneAnimator : MonoBehaviour
 
         yield return StartCoroutine(PlayRunLoop(runImages13And14, 9, 0.15f, hideAfter: false));
         
-
-
-
-
+		yield return new WaitForSeconds(2f);
+		SceneManager.LoadScene("LoadingScene");
 
     }
     IEnumerator FadeOut(CanvasGroup cg)

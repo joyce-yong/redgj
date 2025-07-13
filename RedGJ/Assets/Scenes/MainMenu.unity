@@ -867,7 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Story
   audioSource: {fileID: 1022834077}
-  delayBeforeLoad: 0.5
+  delayBeforeLoad: 0.2
 --- !u!1 &1022834072
 GameObject:
   m_ObjectHideFlags: 0
