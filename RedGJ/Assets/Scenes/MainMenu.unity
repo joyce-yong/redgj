@@ -185,8 +185,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4288648533
+  m_fontColor: {r: 0.33246705, g: 0.58450675, b: 0.6226415, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1692,8 +1692,8 @@ MonoBehaviour:
   - {fileID: 8128899297232893288, guid: e9c7530057cbb5042bfeb91438e7e688, type: 3}
   - {fileID: 617977969898025385, guid: d5f3acc7f1ad86a4cbbf36bd2e68d887, type: 3}
   - {fileID: 6027904693124812613, guid: 971b8dfb32409fd49b77457f89449db3, type: 3}
-  spawnInterval: 0.25
-  xRange: 3
+  spawnInterval: 0.45
+  xRange: 5
   spawnY: 8
 --- !u!4 &1628793456
 Transform:
