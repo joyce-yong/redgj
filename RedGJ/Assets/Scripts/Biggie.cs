@@ -63,7 +63,7 @@ public class Biggie : MonoBehaviour
 
             Food.RemoveTopStackedFoods(3);
 
-            Destroy(gameObject, 0.3f); 
+            Destroy(gameObject); 
         }
     }
 
