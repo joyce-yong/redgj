@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 0f35400321aabb148a3c509f9cb2d605
+guid: 96fb9c3921ed5e647aaf46939c707666
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7696709839742538274
-    second: biggiefall0_0
-  - first:
-      213: 4897519020311332834
-    second: biggiefall0_1
+      213: -8423288889791758744
+    second: pg4-1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,30 +122,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: biggiefall0_0
+      name: pg4-1_0
       rect:
         serializedVersion: 2
-        x: 166
-        y: 533
-        width: 13
-        height: 15
+        x: 15
+        y: 12
+        width: 460
+        height: 661
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,30 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: edd64eefd2bcf2590800000000000000
-      internalID: -7696709839742538274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: biggiefall0_1
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 4
-        width: 360
-        height: 525
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2e7406ec99b77f340800000000000000
-      internalID: 4897519020311332834
+      spriteID: 86eb77b12677a1b80800000000000000
+      internalID: -8423288889791758744
       vertices: []
       indices: 
       edges: []
@@ -198,9 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      biggiefall0_0: -7696709839742538274
-      biggiefall0_1: 4897519020311332834
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
