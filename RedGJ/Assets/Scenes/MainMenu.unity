@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9480156751ed0f498cbdb01554ee7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: GameScene
+  sceneName: Story
   audioSource: {fileID: 1022834077}
   delayBeforeLoad: 0.5
 --- !u!1 &1022834072
