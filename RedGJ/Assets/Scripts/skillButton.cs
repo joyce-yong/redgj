@@ -42,7 +42,7 @@ public class skillButton : MonoBehaviour
 	{
 		GameState.IsPausedBySkillTrigger = true;
 
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(4f);
 
 		GameState.IsPausedBySkillTrigger = false;
 		
