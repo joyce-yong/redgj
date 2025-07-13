@@ -1476,7 +1476,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: fae3df1dde533e14c8e7c37725aca0ec, type: 3}
   m_Resource: {fileID: 8300000, guid: fae3df1dde533e14c8e7c37725aca0ec, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.58
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5577,7 +5577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   freezeDuration: 10
   iceCubePrefab: {fileID: 1654740011704038200, guid: 47b2fc0ff6f3e5f409926cc207590789, type: 3}
-  iceCubeSpawnPosition: {x: -0.01, y: 4.37, z: 0}
+  iceCubeSpawnPosition: {x: 0.019, y: 4.365, z: 0}
   freezeCountdownText: {fileID: 1059127332}
   freezeAudioSource: {fileID: 1776436007}
 --- !u!1 &1805725907
