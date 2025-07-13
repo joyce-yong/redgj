@@ -14,6 +14,8 @@ public class ItemSpawning : MonoBehaviour
     {
         if (!Timer.gameStarted || GameState.IsPausedBySkillTrigger) return;
 
+        elapsedGameTime += Time.deltaTime;
+
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -35,6 +37,7 @@ public class ItemSpawning : MonoBehaviour
                 }
 
                 spawned = Instantiate(biggiePrefab, new Vector3(pos_x, 3.0f, 0.1f), Quaternion.identity);
+                Debug.Log("Biggie spawned!");
             }
             else
             {
@@ -63,4 +66,6 @@ public class ItemSpawning : MonoBehaviour
             timer = inFever ? 0.3f : 2.0f;
         }
     }
+
+
 }
