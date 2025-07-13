@@ -11,7 +11,8 @@ public class ItemSpawning : MonoBehaviour
 
     void Update()
     {
-        if (!Timer.gameStarted || GameState.IsPausedBySkillTrigger) return;
+        if (!Timer.gameStarted || GameState.IsPausedBySkillTrigger)
+            return;
 
         elapsedGameTime += Time.deltaTime;
 
@@ -36,11 +37,10 @@ public class ItemSpawning : MonoBehaviour
                 }
 
                 spawned = Instantiate(biggiePrefab, new Vector3(pos_x, 3.0f, 0.1f), Quaternion.identity);
-                Debug.Log("Biggie spawned!");
             }
             else
             {
-                if (gm.Length == 0)
+                if (gm == null || gm.Length == 0)
                 {
                     Debug.LogWarning("No food prefabs assigned to gm array!");
                     return;
@@ -56,15 +56,13 @@ public class ItemSpawning : MonoBehaviour
                 spawned = Instantiate(gm[index], new Vector3(pos_x, 3.0f, 0.1f), Quaternion.identity);
             }
 
+
             Rigidbody2D rb = spawned.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 rb.gravityScale = 0.005f;
-
-                // Optional: physics-based wriggle
-                float randomTorque = Random.Range(-10f, 10f);
-                rb.AddTorque(randomTorque);
             }
+
 
             timer = inFever ? 0.3f : 2.0f;
         }
